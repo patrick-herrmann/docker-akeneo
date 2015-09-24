@@ -10,6 +10,9 @@ RUN apt-get update \
 		curl \
 		nano \
 		git \
+		ghostscript \
+		gsfonts \
+		ttf-dejavu-core \
 		apache2 \
 		php5 \
 		php5-cli \
@@ -19,6 +22,7 @@ RUN apt-get update \
 		php5-mysqlnd \
 		php5-mcrypt \
 		php5-apcu \
+		php5-imagick \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 

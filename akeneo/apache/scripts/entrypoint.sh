@@ -130,4 +130,6 @@ EOPHP
 	cd /
 fi
 
+# Variables apache
+. /etc/apache2/envvars
 exec "$@"

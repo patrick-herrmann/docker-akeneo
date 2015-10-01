@@ -10,9 +10,6 @@ RUN apt-get update \
 		curl \
 		nano \
 		git \
-		ghostscript \
-		gsfonts \
-		ttf-dejavu-core \
 		apache2 \
 		php5 \
 		php5-cli \
@@ -23,7 +20,6 @@ RUN apt-get update \
 		php5-mcrypt \
 		php5-apcu \
 		php5-mongo \
-		php5-imagick \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
@@ -41,14 +37,10 @@ COPY config/cli-php.ini /etc/php5/cli/php.ini
 # Clean
 RUN rm -rf /tmp/* /var/tmp/*
 
-ENV APACHE_RUN_USER www-data
-ENV APACHE_RUN_GROUP www-data
-ENV APACHE_LOG_DIR /var/log/apache2
-
 VOLUME /var/www/html
 EXPOSE 80
 
 COPY scripts/entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]

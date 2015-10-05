@@ -42,4 +42,4 @@ EXPOSE 80
 COPY scripts/entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]
+CMD ["apache2", "-D", "FOREGROUND"]

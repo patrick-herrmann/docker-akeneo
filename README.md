@@ -9,15 +9,6 @@
 
 * **akeneo**: installation de akeneo avec *MySQL* et *MongoDB*.
 * **akeneo-lite**: installation de akeneo avec *MySQL* uniquement.
-
-## Configuration
-
-Copier le fichier `.env.dist` en `.env` et modifier les valeurs
-
-## Démarrage
-
-    $ docker-compose build
-    $ docker-compose up
     
 ## Interface
 

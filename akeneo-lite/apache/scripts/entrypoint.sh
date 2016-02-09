@@ -2,9 +2,6 @@
 
 set -e
 
-# Apache gets grumpy about PID files pre-existing
-rm -f /var/run/apache2/apache2.pid
-
 # Check install
 DO_INIT_AKENEO="no"
 if [ ! -f /var/www/html/app/config/parameters.yml ]; then
@@ -92,6 +89,9 @@ EOPHP
 
 	cd /
 fi
+
+# Apache gets grumpy about PID files pre-existing
+rm -f /var/run/apache2/apache2.pid
 
 # Variables apache
 . /etc/apache2/envvars

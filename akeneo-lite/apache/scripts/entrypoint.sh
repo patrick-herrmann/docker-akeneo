@@ -37,9 +37,9 @@ if [ "$DO_INIT_AKENEO" = "yes" ]; then
 		sed -ri "s/($regex\s*).*/\1$(sed_escape "$value")/" "app/config/$3"
 	}
 
-	echo 'Download akeneo ...'
-	: ${AKENEO_URL:="http://download.akeneo.com/pim-community-standard-v1.5-latest.tar.gz"}
-	curl -s "$AKENEO_URL" | tar xzf - --directory /var/www/html --strip-components 1
+	echo 'Download akeneo ...' 
+	: ${AKENEO_URL:="http://download.akeneo.com/pim-community-standard-v1.6-latest.tar.gz"}
+	curl -L -s "$AKENEO_URL" | tar xzf - --directory /var/www/html --strip-components 1
 	
 	cd /var/www/html
 
@@ -53,7 +53,7 @@ if [ "$DO_INIT_AKENEO" = "yes" ]; then
 
 	echo 'Composer ...'
 	composer config github-oauth.github.com "$GITHUB_TOKEN"
-	composer install
+	composer install --optimize-autoloader --prefer-dist
 	composer config --unset github-oauth.github.com
 
 	# Attente MySQL

@@ -44,8 +44,8 @@ if [ "$DO_INIT_AKENEO" = "yes" ]; then
 	}
 
 	echo 'Download akeneo ...'
-	: ${AKENEO_URL:="http://download.akeneo.com/pim-community-standard-v1.5-latest.tar.gz"}
-	curl -s "$AKENEO_URL" | tar xzf - --directory /var/www/html --strip-components 1
+	: ${AKENEO_URL:="http://download.akeneo.com/pim-community-standard-v1.6-latest.tar.gz"}
+	curl -L -s "$AKENEO_URL" | tar xzf - --directory /var/www/html --strip-components 1
 	
 	cd /var/www/html
 
@@ -59,8 +59,8 @@ if [ "$DO_INIT_AKENEO" = "yes" ]; then
 
 	echo 'Composer ...'
 	composer config github-oauth.github.com "$GITHUB_TOKEN"
-	composer install
-	composer --prefer-dist require doctrine/mongodb-odm-bundle 3.0.1
+	composer install --optimize-autoloader --prefer-dist
+	composer --prefer-dist require doctrine/mongodb-odm-bundle 3.2.0
 	composer config --unset github-oauth.github.com
 
 	echo 'Activation MongoDB ...'

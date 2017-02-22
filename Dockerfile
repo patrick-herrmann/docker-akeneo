@@ -1,1 +1,2 @@
-FROM docker-akeneo
+FROM s7b4/akeneo
+WORKDIR akeneo

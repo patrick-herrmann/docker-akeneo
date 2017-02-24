@@ -2,6 +2,15 @@
 FROM debian:jessie
 MAINTAINER s7b4 <baron.stephane@gmail.com>
 
+# Set environment variables
+ENV MYSQL_LINK mysql
+ENV MYSQL_DATABASE akeneo
+ENV MYSQL_USER ake
+ENV MYSQL_PASSWORD neo
+ENV MONGO_LINK mongo
+ENV MONGO_DATABASE akeneo
+ENV GITHUB_TOKEN 922c80db938b5b11e3aa416c891f5104a893f4d2
+
 # Base + Akeneo requirements
 RUN apt-get update \
 	&& apt-get install --no-install-recommends --yes \

@@ -69,9 +69,11 @@ if [ "$DO_INIT_AKENEO" = "yes" ]; then
 	set_config mongodb_server "mongodb://$MONGO_LINK:27017" pim_parameters.yml
 	set_config mongodb_database "$MONGO_DATABASE" pim_parameters.yml
 	set_config pim_catalog_product_storage_driver "doctrine/mongodb-odm" pim_parameters.yml
+	echo 'Activation MongoDB ... OK'
 
 	# Attente MySQL
-	TERM=dumb php -- "$MYSQL_LINK" "$MYSQL_USER" "$MYSQL_PASSWORD" <<'EOPHP'
+	echo 'MySQL ...'
+#	TERM=dumb php -- "$MYSQL_LINK" "$MYSQL_USER" "$MYSQL_PASSWORD" <<'EOPHP'
 # <?php
 # $stderr = fopen('php://stderr', 'w');
 # $maxTries = 10;
@@ -87,7 +89,7 @@ if [ "$DO_INIT_AKENEO" = "yes" ]; then
 # 	}
 # } while ($mysql->connect_error);
 # EOPHP
-	echo 'MySQL OK ...'
+	echo 'MySQL ... OK'
 
 	# Attente MongoDB
 	TERM=dumb php -- "$MONGO_LINK" <<'EOPHP'

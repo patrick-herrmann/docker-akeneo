@@ -73,22 +73,22 @@ if [ "$DO_INIT_AKENEO" = "yes" ]; then
 
 	# Attente MySQL
 	echo 'MySQL ...'
-#	TERM=dumb php -- "$MYSQL_LINK" "$MYSQL_USER" "$MYSQL_PASSWORD" <<'EOPHP'
-# <?php
-# $stderr = fopen('php://stderr', 'w');
-# $maxTries = 10;
-# do {
-# 	$mysql = new mysqli($argv[1], $argv[2], $argv[3]);
-# 	if ($mysql->connect_error) {
-# 		fwrite($stderr, "\n" . 'MySQL Connection Error: (' . $mysql->connect_errno . ') ' . $mysql->connect_error . "\n");
-# 		--$maxTries;
-# 		if ($maxTries <= 0) {
-# 			exit(1);
-# 		}
-# 		sleep(15);
-# 	}
-# } while ($mysql->connect_error);
-# EOPHP
+	TERM=dumb php -- "$MYSQL_LINK" "$MYSQL_USER" "$MYSQL_PASSWORD" <<'EOPHP'
+<?php
+$stderr = fopen('php://stderr', 'w');
+$maxTries = 10;
+do {
+	$mysql = new mysqli($argv[1], $argv[2], $argv[3]);
+	if ($mysql->connect_error) {
+		fwrite($stderr, "\n" . 'MySQL Connection Error: (' . $mysql->connect_errno . ') ' . $mysql->connect_error . "\n");
+		--$maxTries;
+		if ($maxTries <= 0) {
+			exit(1);
+		}
+		sleep(15);
+	}
+} while ($mysql->connect_error);
+EOPHP
 	echo 'MySQL ... OK'
 
 	# Attente MongoDB
